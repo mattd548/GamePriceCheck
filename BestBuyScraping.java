@@ -16,17 +16,18 @@ public class BestBuyScraping {
      private HtmlForm form;
      private DomElement button;
      private DomElement element;
-     private static VideoGame game;
+     private static VideoGame game = new VideoGame();
+     private String text;
      HtmlTextInput textField;
-     
+     // sets environment and page as bestbuy the moment constructor is called 
     public BestBuyScraping() throws FailingHttpStatusCodeException, MalformedURLException, IOException {
     	
-    	//this.setEnvironment();
-    	//this.setPage();
+    	this.setEnvironment();
+    	this.setPage("https://www.bestbuy.com/");
     		
     }
      
-	public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
+	/*public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
 		game = new VideoGame();
 		BestBuyScraping t= new BestBuyScraping();
 		
@@ -41,7 +42,7 @@ public class BestBuyScraping {
 		t.selectPrice();
 		t.selectPublisher();
         //System.out.println(game.getString_new_price());
-	}
+	}*/
 	
 	
      public void setPage(String page) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
@@ -85,11 +86,11 @@ public class BestBuyScraping {
     
 	// submits search to bestbuy homepage based on game title
 	// MUST USE first before getting any info about price, esrb, etc
-	public void inputSearch() {
+	public void inputSearch(String game) {
 		 // textfield is based on 
 		 this.textField = form.getInputByName("st");
 		 try {
-			textField.type("the outer worlds");
+			textField.type(game);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -107,7 +108,7 @@ public class BestBuyScraping {
 		// price is based on page layout which is constantly updated 
 		//check div of website using inspect element
 	   this.element = page.getFirstByXPath("//div[@class='priceView-hero-price priceView-customer-price']");
-	   String text = element.getTextContent();
+	   this.text = element.getTextContent();
 	   // remove any non numbers using regular expression and replace with space, from the div class
 	   text = text.replaceAll("[^0-9.$]", " ");   
 	   
@@ -120,7 +121,7 @@ public class BestBuyScraping {
 	public void selectPublisher() 
 	{
 		this.element = page.getFirstByXPath("//span[@class='sku-value']");
-		String text = element.getTextContent();
+		this.text = element.getTextContent();
 		System.out.println(text);
 		game.setPlatform(text);
 		
