@@ -20,9 +20,15 @@ public class AmazonScraper
     private HtmlForm form;
     private DomElement button;
     private DomElement element;
-    private static VideoGame game;
+    private static VideoGame game = new VideoGame();
     HtmlTextInput textField;
     
+    
+    public AmazonScraper() throws FailingHttpStatusCodeException, MalformedURLException, IOException 
+    {    this.setEnvironment();
+    	 this.setPage("https://www.amazon.com/gp/browse.html?node=468642&ref_=nav_em__cvg_0_2_13_10");
+    	
+    }
     
 /*	public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException 
 	{
