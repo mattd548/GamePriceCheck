@@ -9,6 +9,9 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+
+
+
 // class pulls the first item it finds passed on user's search
 // only searches the video game section of amazon 
 // highly dependent on amazon search results 
@@ -29,32 +32,7 @@ public class AmazonScraper
     	 this.setPage("https://www.amazon.com/gp/browse.html?node=468642&ref_=nav_em__cvg_0_2_13_10");
     	
     }
-    
-/*	public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException 
-	{
-		game = new VideoGame();
-		AmazonScraper t= new AmazonScraper();
-		
-		t.setEnvironment();
-		t.setPage("https://www.amazon.com/gp/browse.html?node=468642&ref_=nav_em__cvg_0_2_13_10");
-		//t.getPageAstext();
-		t.setForm();
-		t.setSearchButton();
-		t.inputSearch();
-		//t.getPageAstext();
-		t.selectTitle();
-		
-		//t.getPageAstext();
-		t.selectPrice();
-		//t.selectPublisher();
-        //System.out.println(game.getString_new_price());
-	}*/
 	
-    
-    
-    
-    
-    
 	  private void setEnvironment() 
 	  {
 	    	//makes sure to turn javascript on since the website im scraping uses javascript
@@ -79,7 +57,7 @@ public class AmazonScraper
 			
 	  }
     
-    
+      // prints entire page as text in console 
 	  public void getPageAstext() 
 	  {
 	    	System.out.print(this.page.asText()); 
