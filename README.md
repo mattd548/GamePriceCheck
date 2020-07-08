@@ -1,4 +1,4 @@
-# GamePriceCheck
+# GamePriceChecker
 A small project made using Java that scrapes information from both BestBuy and Amazon in order to compare prices of a video game that a user searches for.
 Its heavily dependant on both website layouts of bestbuy and amazon and also the search engine of both websites. It pulls information from the top search result.
 So far it can pull price, title, and platform but can be modified to pull more.
