@@ -12,6 +12,9 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
 
 // had to develop a bestbuyscraper since i cant use the api provided by best buy :(
+//class pulls the first item it finds based on user's search
+//highly dependent on best buy search engine
+
 public class BestBuyScraping {
 	 private final WebClient webclient = new WebClient(BrowserVersion.INTERNET_EXPLORER);
      private HtmlPage page;
