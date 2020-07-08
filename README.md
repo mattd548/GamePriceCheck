@@ -11,4 +11,8 @@ The following program relies on the HTMLunit JAR which you can download here [Ht
 4. Add the java classes to your project
 5. Run and compare prices 
 
-#Screenshots
+# Screenshots
+![](images/output.PNG)
+
+![](images/output2.PNG)
+
