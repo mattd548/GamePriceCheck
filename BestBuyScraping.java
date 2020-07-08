@@ -9,6 +9,8 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+
+
 // had to develop a bestbuyscraper since i cant use the api provided by best buy :(
 public class BestBuyScraping {
 	 private final WebClient webclient = new WebClient(BrowserVersion.INTERNET_EXPLORER);
@@ -19,61 +21,57 @@ public class BestBuyScraping {
      private static VideoGame game = new VideoGame();
      private String text;
      HtmlTextInput textField;
+     
+     
      // sets environment and page as bestbuy the moment constructor is called 
-    public BestBuyScraping() throws FailingHttpStatusCodeException, MalformedURLException, IOException {
+    public BestBuyScraping() throws FailingHttpStatusCodeException, MalformedURLException, IOException 
+    {
     	
     	this.setEnvironment();
     	this.setPage("https://www.bestbuy.com/");
     		
     }
      
-	/*public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
-		game = new VideoGame();
-		BestBuyScraping t= new BestBuyScraping();
-		
-		t.setEnvironment();
-		t.setPage("https://www.bestbuy.com/");
-		//t.getPageAstext();
-		t.setForm();
-		t.setSearchButton();
-		t.inputSearch();
-		t.selectTitle();
-		//t.getPageAstext();
-		t.selectPrice();
-		t.selectPublisher();
-        //System.out.println(game.getString_new_price());
-	}*/
 	
 	
-     public void setPage(String page) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
-	this.page = webclient.getPage(page);
+	 // will set the page to whatever the user wants incase bestbuy changes domain or name which is very unlikely
+     public void setPage(String page) throws FailingHttpStatusCodeException, MalformedURLException, IOException 
+     {
+	 this.page = webclient.getPage(page);
      }
 
-    public void getPageAstext() {
+    public void getPageAstext() 
+    {
     	System.out.print(this.page.asText()); 
     }
     
     
     
-    private void setEnvironment() {
-    	//makes sure to turn javascript off since the website im scraping uses javascript
+    private void setEnvironment() 
+    {
+    	//makes sure to turn javascript off since i dont need it 
     	//turns warnings off 
     	java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF); 
     	webclient.getOptions().setJavaScriptEnabled(false);
     	webclient.getOptions().setThrowExceptionOnFailingStatusCode(false);
     	
     }
-
-	public HtmlForm getForm() {
+    
+    // will return form 
+	public HtmlForm getForm() 
+	{
 		return form;
 	}
 
-	public void setForm() {
+	// sets form to the search bar at bestbuy.com, will need to be updated based on how bestbuy changes the form or form name
+	public void setForm() 
+	{
 		this.form = page.getFormByName("frmSearch");
 		
 	}
 
-	public DomElement getButton() {
+	public DomElement getButton() 
+	{
 		return button;
 	}
 
@@ -104,6 +102,7 @@ public class BestBuyScraping {
 	}
 	
      //selects price and saves it to string text 
+	 // then takes text and saves it to game object
 	public void selectPrice() {
 		// price is based on page layout which is constantly updated 
 		//check div of website using inspect element
