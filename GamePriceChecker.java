@@ -4,8 +4,12 @@ import java.util.Scanner;
 
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 
+
+// program searches amazon and bestbuy for a game in order to compare prices
+// only pulls the top result from both bestbuy and amazon 
+
 public class GamePriceChecker {
-	private VideoGame game = new VideoGame();
+	
 	
 
 	public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException 
@@ -49,41 +53,31 @@ public class GamePriceChecker {
 
 }
 	
+	//uses the bestbuy scraper to search best buy for the game title
 	
 	public static void checkBestBuy(String game_title) throws FailingHttpStatusCodeException, MalformedURLException, IOException
 	{
 		
 	    BestBuyScraping bestbuy_scraper= new BestBuyScraping();
-		//t.getPageAstext();
 		bestbuy_scraper.setForm();
 		bestbuy_scraper.setSearchButton();
 		bestbuy_scraper.inputSearch(game_title);
 		bestbuy_scraper.selectTitle();
-		//t.getPageAstext();
 		bestbuy_scraper.selectPrice();
 		bestbuy_scraper.selectPublisher();
-        //System.out.println(game.getString_new_price());
 		
 	}
 	
+	//uses the amazon scraper to search amazon for game title
 	public static void checkAmazon(String game_title) throws FailingHttpStatusCodeException, MalformedURLException, IOException 
 	{
 		AmazonScraper amazon_game= new AmazonScraper();
-		//t.getPageAstext();
 		amazon_game.setForm();
 		amazon_game.setSearchButton();
 		amazon_game.inputSearch(game_title);
-		//t.getPageAstext();
 		amazon_game.selectTitle();
-		
-		//t.getPageAstext();
 		amazon_game.selectPrice();
-		//t.selectPublisher();
-        //System.out.println(game.getString_new_price());
-		
-		
-		
-		
+				
 		
 	}
 	
